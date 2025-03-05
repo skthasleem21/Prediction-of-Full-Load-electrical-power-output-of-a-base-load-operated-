@@ -1,0 +1,1 @@
+# Prediction-of-Full-Load-electrical-power-output-of-a-base-load-operated-
