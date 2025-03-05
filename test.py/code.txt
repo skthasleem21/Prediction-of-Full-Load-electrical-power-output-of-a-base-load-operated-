@@ -1,0 +1,27 @@
+import pandas as pd
+import joblib
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+
+# Load the trained model
+model = joblib.load("models/power_model.pkl")
+
+# Load test dataset
+df_test = pd.read_csv("dataset/power_plant_data.csv")  # Replace with actual test dataset
+
+# Separate features (X) and target (y)
+X_test = df_test.drop(columns=["PE"])  # Remove target column
+y_test = df_test["PE"]  # Target column
+
+# Make predictions
+y_pred = model.predict(X_test)
+
+# Evaluate model
+mae = mean_absolute_error(y_test, y_pred)
+mse = mean_squared_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+
+# Print results
+print("Model Performance on Test Data:")
+print(f"Mean Absolute Error (MAE): {mae}")
+print(f"Mean Squared Error (MSE): {mse}")
+print(f"R² Score: {r2}")

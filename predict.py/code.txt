@@ -1,0 +1,25 @@
+import joblib
+import pandas as pd
+
+# Load the trained model
+model = joblib.load("models/power_model.pkl")
+
+# Function to make predictions
+def predict_power_output(AT, V, AP, RH):
+    # Create a DataFrame with input features
+    input_data = pd.DataFrame([[AT, V, AP, RH]], columns=["AT", "V", "AP", "RH"])
+    
+    # Predict power output
+    prediction = model.predict(input_data)
+    
+    return prediction[0]
+
+# Example usage
+if __name__ == "__main__":
+    AT = float(input("Enter Ambient Temperature (AT): "))
+    V = float(input("Enter Exhaust Vacuum (V): "))
+    AP = float(input("Enter Ambient Pressure (AP): "))
+    RH = float(input("Enter Relative Humidity (RH): "))
+
+    predicted_output = predict_power_output(AT, V, AP, RH)
+    print(f"Predicted Power Output: {predicted_output:.2f} MW")

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Power Output Prediction</title>
+</head>
+<body>
+    <h1>Enter Plant Parameters</h1>
+    <form action="/predict" method="post">
+        <input type="text" name="AT" placeholder="Ambient Temperature">
+        <input type="text" name="V" placeholder="Exhaust Vacuum">
+        <input type="text" name="AP" placeholder="Ambient Pressure">
+        <input type="text" name="RH" placeholder="Relative Humidity">
+        <button type="submit">Predict</button>
+    </form>
+</body>
+</html>
